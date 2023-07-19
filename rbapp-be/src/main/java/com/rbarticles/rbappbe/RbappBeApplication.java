@@ -12,7 +12,7 @@ public class RbappBeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(RbappBeApplication.class, args);
 	}
-	@GetMapping("/")
+	@GetMapping("/you")
 	public String appRoot(){
 		return "Hello, Motherfucker!";
 	}
