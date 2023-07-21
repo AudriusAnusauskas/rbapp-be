@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 public class Article {
     @Id
-    private ObjectId id;
+    private ObjectId _id;
     private Integer articleId;
     private String title;
     private String publicationTitle;
@@ -24,4 +24,15 @@ public class Article {
     private  String text;
     private String photoAuthor;
 
+    public Article(Integer articleId, String title, String publicationTitle, String location, String year, String url, String imgUrl, String text, String photoAuthor) {
+        this.articleId = articleId;
+        this.title = title;
+        this.publicationTitle = publicationTitle;
+        this.location = location;
+        this.year = year;
+        this.url = url;
+        this.imgUrl = imgUrl;
+        this.text = text;
+        this.photoAuthor = photoAuthor;
+    }
 }
