@@ -1,10 +1,11 @@
-# Use the official maven/Java image to create a build artifact.
-FROM maven:3.6.0-jdk-11-slim AS build
-WORKDIR /usr/src/app
-COPY . .
+# Use Maven to build the application
+FROM maven:3.6-jdk-11 as build
+WORKDIR /app
+COPY . /app
 RUN mvn clean package
 
-# Use the official OpenJDK image as the base image.
+# Run the application
 FROM openjdk:11-jre-slim
-COPY --from=build /usr/src/app/target/rbapp-be-0.0.1-SNAPSHOT.jar /app.jar
+COPY --from=build /app/target/*.jar /app.jar
 ENTRYPOINT ["java", "-jar", "/app.jar"]
+
